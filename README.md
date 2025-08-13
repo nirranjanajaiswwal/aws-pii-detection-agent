@@ -32,11 +32,11 @@ A comprehensive MCP (Model Context Protocol) server for automated AWS data disco
               ▼
 ┌─────────────────────────────────────┐
 │           AWS Services              │
-│  • Amazon S3                       │
-│  • Amazon DynamoDB                 │
-│  • AWS Glue                        │
-│  • AWS Lake Formation              │
-│  • Amazon Comprehend               │
+│  • Amazon S3                        │
+│  • Amazon DynamoDB                  │
+│  • AWS Glue                         │
+│  • AWS Lake Formation               │
+│  • Amazon Comprehend                │
 └─────────────────────────────────────┘
 ```
 
@@ -170,58 +170,6 @@ Add to your MCP client configuration (e.g., `~/.aws/amazonq/mcp.json`):
 - Column-level and table-level tagging
 - Automated access control classification
 
-## 🧪 Testing
-
-### Run All Tests
-```bash
-python -m pytest tests/ -v
-```
-
-### Test Lake Formation Integration
-```bash
-python tests/test_lake_formation_integration.py
-```
-
-### Test Individual Components
-```bash
-python tests/test_fastmcp_server.py
-python tests/test_simple.py
-```
-
-## 📁 Project Structure
-
-```
-aws-data-discovery-agent/
-├── core/                          # Core functionality
-│   ├── pii_agent.py              # Main PII detection agent
-│   ├── aws_mcp_client.py         # AWS MCP client
-│   └── masking.py                # Data masking utilities
-├── servers/                       # MCP servers
-│   ├── mcp_server_orchestrator.py # Main orchestrator server
-│   ├── mcp_server_aws.py         # AWS-specific server
-│   ├── pii_dashboard.py          # Streamlit dashboard
-│   └── run_data_discovery_agent.py # Standalone runner
-├── tests/                         # Test suite
-│   ├── test_lake_formation_integration.py # LF integration tests
-│   ├── test_fastmcp_server.py    # Server tests
-│   └── test_simple.py            # Basic functionality tests
-├── config/                        # Configuration
-│   ├── mcp_config.json           # MCP server config
-│   └── setup_mcp.py              # MCP setup utilities
-├── diagrams/                      # Generated diagrams
-│   └── diagram_generator.py      # Diagram generation
-├── docs/                          # Documentation
-└── requirements.txt               # Python dependencies
-```
-
-## 🔒 Security & Compliance
-
-- **Dry Run Mode**: All operations support safe testing mode
-- **IAM Permissions**: Follows least privilege principle
-- **Data Privacy**: PII detection without data exposure
-- **Audit Trail**: Complete logging of all operations
-- **Encryption**: Supports encryption at rest and in transit
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -239,7 +187,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Issues**: Report bugs and feature requests via GitHub Issues
 - **Documentation**: See the `docs/` directory for detailed documentation
-- **AWS Labs MCP**: Visit [awslabs/mcp](https://github.com/awslabs/mcp) for MCP server documentation
 
 ## 🎯 Roadmap
 
