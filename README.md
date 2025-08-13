@@ -1,6 +1,60 @@
 # AWS Data Discovery & PII Detection Agent
 
-A comprehensive MCP (Model Context Protocol) server for automated AWS data discovery, PII detection, and data governance using Lake Formation.
+A comprehensive MCP (Model Context Protocol) server for automated AWS data discovery, PII detection, and data governance using Lake Formation. This comprehensive server provides automated data discovery, PII classification, and governance workflows, featuring 14+ operational tools for discovering AWS data sources, creating and running Glue crawlers, applying Lake Formation tags, cataloging data, detecting sensitive data, launching interactive dashboards, and generating compliance documentation.
+
+## Available MCP Tools
+
+### Data Discovery & Orchestration
+- `orchestrate_data_discovery` - Complete data discovery workflow with S3, DynamoDB, Glue cataloging, and PII detection
+- `discover_aws_data_sources` - Discover S3 buckets and DynamoDB tables across AWS regions
+- `get_dashboard_data` - Run data discovery workflow and prepare data for dashboard display
+- `launch_data_discovery_dashboard` - Launch interactive Streamlit dashboard at http://localhost:8501
+
+### Data Cataloging & Classification
+- `catalog_with_glue` - Create and run Glue crawlers to catalog S3 and DynamoDB data sources
+- `classify_and_tag_data` - Classify data and apply Lake Formation tags for governance
+- `generate_architecture_diagram` - Generate AWS architecture diagrams for discovered infrastructure
+
+### AWS Labs MCP Integration
+- `list_s3_buckets` - List S3 buckets using s3-tables-mcp-server
+- `manage_aws_glue_databases` - Create Glue databases using aws-dataprocessing-mcp-server
+- `list_dynamodb_tables` - List DynamoDB tables using dynamodb-mcp-server
+
+### Glue Crawler Operations
+- `create_glue_crawler` - Create Glue crawlers for S3 and DynamoDB targets
+- `start_glue_crawler` - Start/run Glue crawlers to catalog data
+- `get_glue_crawler_status` - Monitor crawler execution status (RUNNING, SUCCEEDED, FAILED)
+
+### Lake Formation Integration
+- `create_lf_tags` - Create Lake Formation tag definitions for data governance
+- `register_s3_with_lakeformation` - Register S3 locations with Lake Formation
+- `register_table_with_lakeformation` - Register Glue tables with Lake Formation
+- `apply_lf_tags` - Apply Lake Formation tags to resources based on PII detection
+
+## Available MCP Resources
+
+- `discovery://s3/buckets` - List of discovered S3 buckets
+- `discovery://dynamodb/tables` - List of discovered DynamoDB tables
+- `catalog://glue/databases` - Cataloged databases in Glue
+- `classification://pii/results` - Data classification and PII detection results
+- `lakeformation://tags/definitions` - Lake Formation tag definitions for governance
+- `lakeformation://resources/registered` - S3 locations and tables registered with Lake Formation
+- `lakeformation://tags/applied` - Applied Lake Formation tags by resource
+
+## Available MCP Prompts
+
+- `classify_data_sensitivity` - Classify data sensitivity based on content analysis
+- `generate_compliance_tags` - Generate Lake Formation tags for compliance requirements
+- `create_data_governance_policy` - Create data governance policy based on discovered data
+- `setup_lakeformation_governance` - Setup complete Lake Formation governance for discovered resources
+
+## Instructions
+
+The MCP Server for AWS data discovery and classification provides a comprehensive set of tools for discovering, cataloging, and classifying sensitive data across AWS environments.
+
+To use these tools, ensure you have proper AWS credentials configured with appropriate permissions for S3, DynamoDB, Glue, and Comprehend operations. The server will automatically use credentials from environment variables or other standard AWS credential sources.
+
+All tools support an optional `region` parameter to specify which AWS region to operate in. If not provided, it will use the AWS_REGION environment variable or default to 'us-west-2'.
 
 ## 🚀 Features
 
@@ -22,11 +76,11 @@ A comprehensive MCP (Model Context Protocol) server for automated AWS data disco
               │
               ▼
 ┌─────────────────────────────────────┐
-│      AWS Labs MCP Servers          │
-│  • aws-dataprocessing-mcp-server   │
-│  • dynamodb-mcp-server             │
-│  • s3-tables-mcp-server            │
-│  • aws-diagram-mcp-server          │
+│      AWS Labs MCP Servers           │
+│  • aws-dataprocessing-mcp-server    │
+│  • dynamodb-mcp-server              │
+│  • s3-tables-mcp-server             │
+│  • aws-diagram-mcp-server           │
 └─────────────┬───────────────────────┘
               │
               ▼
