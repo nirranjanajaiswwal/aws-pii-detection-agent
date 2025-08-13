@@ -1,0 +1,46 @@
+{
+  "description": "MCP Server Configuration for AWS Data Discovery Agent using AWS Labs MCP Servers",
+  "orchestrator": {
+    "name": "pii-detection-orchestrator",
+    "framework": "fastmcp",
+    "version": "2.11.3",
+    "port": 8000,
+    "enabled": true
+  },
+  "aws_labs_mcp_servers": {
+    "s3-tables-mcp-server": {
+      "path": "src.s3-tables-mcp-server",
+      "enabled": true,
+      "operations": ["list_s3_buckets", "get_bucket_metadata"],
+      "description": "AWS Labs S3 Tables MCP Server for S3 operations"
+    },
+    "aws-dataprocessing-mcp-server": {
+      "path": "src.aws-dataprocessing-mcp-server",
+      "enabled": true,
+      "operations": ["manage_aws_glue_databases", "manage_aws_glue_tables", "manage_aws_athena_queries"],
+      "description": "AWS Labs Data Processing MCP Server for Glue, Athena, EMR operations"
+    },
+    "dynamodb-mcp-server": {
+      "path": "src.dynamodb-mcp-server",
+      "enabled": true,
+      "operations": ["list_tables", "describe_table", "scan_table"],
+      "description": "AWS Labs DynamoDB MCP Server for DynamoDB operations"
+    },
+    "aws-diagram-mcp-server": {
+      "path": "src.aws-diagram-mcp-server",
+      "enabled": true,
+      "operations": ["generate_diagram", "list_icons"],
+      "description": "AWS Labs Diagram MCP Server for architecture diagrams"
+    }
+  },
+  "integration_mode": "aws_labs_mcp_servers",
+  "fallback_mode": "direct_aws_sdk",
+  "fastmcp": {
+    "features": {
+      "auto_type_handling": true,
+      "built_in_validation": true,
+      "decorator_based": true,
+      "simplified_setup": true
+    }
+  }
+}
